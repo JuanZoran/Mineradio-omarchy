@@ -2,7 +2,7 @@
 
 ![Mineradio 暗场启动页](./docs/assets/readme/cinema-beat-smoke.png)
 
-Mineradio 是一款 Windows 桌面沉浸式音乐播放器，把搜索播放、歌词舞台、粒子视觉、3D 歌单架和完整桌面模式组合成一个更接近现场感的私人音乐空间。
+Mineradio 是一款桌面沉浸式音乐播放器，把搜索播放、歌词舞台、粒子视觉和 3D 歌单架组合成一个更接近现场感的私人音乐空间。Windows 版本额外提供与 Explorer 深度集成的完整桌面模式。
 
 ## 立即下载 Windows 安装包
 
@@ -76,6 +76,27 @@ npm run build:win
 ```
 
 桌面版入口由 Electron 主进程加载本地服务。`npm run build:win` 会生成 Windows NSIS 安装包，产物位于 `dist/`。
+
+### Omarchy / Hyprland（Wayland）
+
+```bash
+npm install
+npm run start:omarchy
+```
+
+`start:omarchy` 明确使用原生 Wayland；普通的 `npm start` 在 Electron 42 上也会根据当前会话自动选择 Wayland。应用使用 `com.mineradio.Mineradio` 作为 Wayland `app_id`，并通过 XDG Desktop Portal 注册全局快捷键，因此首次配置全局快捷键时桌面可能显示授权提示。
+
+Linux 构建命令：
+
+```bash
+npm run build:linux
+npm run build:linux:dir
+npm run build:linux:appimage
+```
+
+`build:linux` 在 `dist/` 生成无需 FUSE 的 `tar.gz`，`build:linux:dir` 生成便于本机测试的免安装目录。AppImage 是可选产物；Omarchy 上若未安装 `fuse2`，请使用 `tar.gz`，或先运行 `omarchy pkg add fuse2` 再启动 AppImage。Linux 下使用 PNG 窗口/托盘图标，本地音乐、歌词舞台、粒子视觉、3D 歌单架、桌面歌词和托盘模式均可用。
+
+目前“完整桌面模式”、Windows Explorer 图标共存、Wallpaper Engine 实时 DWM 捕获和系统内存清理仍属于 Windows 专属能力；在 Linux 上这些入口会显示为当前系统不支持，不影响播放器主体运行。本地 MP4 背景不受此限制。
 
 ## 更新机制
 
