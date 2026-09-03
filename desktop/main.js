@@ -72,7 +72,10 @@ let memoryAutoState = {
   lastResult: null,
   lastError: '',
 };
-let closeBehavior = 'exit';
+// Keep the process (and therefore audio playback) alive when the user closes
+// the frameless main window. Users can still explicitly choose "exit" in the
+// preferences or use the tray's Quit command.
+let closeBehavior = 'tray';
 let appQuitting = false;
 let appQuitCleanupPromise = null;
 let appQuitCleanupComplete = false;
@@ -5599,6 +5602,9 @@ if (!gotSingleInstanceLock) {
     screen.on('display-removed', handleDisplayLayoutChanged);
     powerMonitor.on('resume', () => restoreUnexpectedFullscreenVisibility(mainWindow, 'system-resume'));
     powerMonitor.on('unlock-screen', () => restoreUnexpectedFullscreenVisibility(mainWindow, 'screen-unlock'));
+    // Create the StatusNotifier item during startup so it is available before
+    // the first close-to-background action on Linux desktops such as Omarchy.
+    createOrUpdateTray();
     await createWindow();
   }).catch((e) => reportWindowCreationFailure('Main', e));
 

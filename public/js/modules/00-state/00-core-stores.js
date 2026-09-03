@@ -147,7 +147,9 @@ var CONTROLS_AUTO_HIDE_STORE_KEY = 'mineradio-controls-auto-hide-v1';
 var FREE_CAMERA_STORE_KEY = 'mineradio-free-camera-v1';
 var HOTKEY_SETTINGS_STORE_KEY = 'mineradio-hotkey-settings-v1';
 var VISUAL_GUIDE_SEEN_STORE_KEY = 'mineradio-visual-guide-seen-v2';
-var CLOSE_BEHAVIOR_STORE_KEY = 'mineradio-close-behavior-v1';
+// v2 intentionally resets the historical "exit" default. Existing v1 users
+// receive close-to-tray once, while choices made in the current UI persist.
+var CLOSE_BEHAVIOR_STORE_KEY = 'mineradio-close-behavior-v2';
 var LAST_PLAYBACK_STORE_KEY = 'mineradio-last-playback-v1';
 var STARTUP_AUTOPLAY_STORE_KEY = 'mineradio-startup-autoplay-v1';
 var STARTUP_FAST_SKIP_STORE_KEY = 'mineradio-startup-fast-skip-v1';

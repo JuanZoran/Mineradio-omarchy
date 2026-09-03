@@ -94,7 +94,7 @@ npm run build:linux:dir
 npm run build:linux:appimage
 ```
 
-`build:linux` 在 `dist/` 生成无需 FUSE 的 `tar.gz`，`build:linux:dir` 生成便于本机测试的免安装目录。AppImage 是可选产物；Omarchy 上若未安装 `fuse2`，请使用 `tar.gz`，或先运行 `omarchy pkg add fuse2` 再启动 AppImage。Linux 下使用 PNG 窗口/托盘图标，本地音乐、歌词舞台、粒子视觉、3D 歌单架、桌面歌词和托盘模式均可用。
+`build:linux` 在 `dist/` 生成无需 FUSE 的 `tar.gz`，`build:linux:dir` 生成便于本机测试的免安装目录。AppImage 是可选产物；Omarchy 上若未安装 `fuse2`，请使用 `tar.gz`，或先运行 `omarchy pkg add fuse2` 再启动 AppImage。Linux 下使用 PNG 窗口/托盘图标，本地音乐、歌词舞台、粒子视觉、3D 歌单架、桌面歌词和托盘模式均可用。默认点击关闭会隐藏到后台并继续播放；从托盘菜单选择“退出”才会结束进程。
 
 目前“完整桌面模式”、Windows Explorer 图标共存、Wallpaper Engine 实时 DWM 捕获和系统内存清理仍属于 Windows 专属能力；在 Linux 上这些入口会显示为当前系统不支持，不影响播放器主体运行。本地 MP4 背景不受此限制。
 
